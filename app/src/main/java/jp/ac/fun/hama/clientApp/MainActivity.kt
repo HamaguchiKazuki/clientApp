@@ -39,14 +39,16 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         if (iSeyanaService == null) {
-            val intent = Intent("Seyana")
-            intent.setPackage("jp.ac.fun.hama.serverapp")
-            Log.d(tag, "bind")
-            bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
+            Intent("Seyana").also { intent ->
+                intent.setPackage("jp.ac.fun.hama.serverapp")
+                Log.d(tag, "bind")
+                bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
+            }
         }
         button_seyana.setOnClickListener {
             val text = iSeyanaService?.returnFixedLetter()
             Log.d(tag, "return text, ${text}")
+            iSeyanaService?.streamSeyana()
         }
     }
 }
