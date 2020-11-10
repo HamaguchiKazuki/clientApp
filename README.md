@@ -1,5 +1,5 @@
 # clientApp
-client側
+client側  
 server側を先に起動してね
 
 追加プラグイン
