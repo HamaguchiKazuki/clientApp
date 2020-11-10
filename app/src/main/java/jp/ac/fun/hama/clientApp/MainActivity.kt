@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(tag, "textView = ${textView.text}")
     }
 
 
@@ -46,9 +47,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
         button_seyana_gacha.setOnClickListener {
+            val gachaCorrectString = "SeyanaSorenaWakaru"
+            if (textView.text.toString() == "Seyana.") {
+                textView.text = ""
+            }
             val seyanaGachaText = iSeyanaService?.returnFixedLetter()
-            Log.d(tag, "return text, ${seyanaGachaText}")
+            Log.d(tag, "return text, $seyanaGachaText")
+            if (gachaCorrectString.length <= textView.text.length) {
+                textView.text = ""
+            }
             textView.append(seyanaGachaText)
+
+            if (textView.text.toString() == gachaCorrectString) {
+                iSeyanaService?.streamSeyana()
+            }
         }
 
         button_seyana_web.setOnClickListener {
