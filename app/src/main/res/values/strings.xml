@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">clientApp</string>
+    <string name="seyana_gacha">Seyana Gacha</string>
+    <string name="seyana_web">Seyana Web</string>
 </resources>

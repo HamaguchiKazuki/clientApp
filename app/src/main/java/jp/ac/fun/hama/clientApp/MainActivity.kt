@@ -45,10 +45,19 @@ class MainActivity : AppCompatActivity() {
                 bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
             }
         }
-        button_seyana.setOnClickListener {
-            val text = iSeyanaService?.returnFixedLetter()
-            Log.d(tag, "return text, ${text}")
+        button_seyana_gacha.setOnClickListener {
+            val seyanaGachaText = iSeyanaService?.returnFixedLetter()
+            Log.d(tag, "return text, ${seyanaGachaText}")
+            textView.append(seyanaGachaText)
+        }
+
+        button_seyana_web.setOnClickListener {
             iSeyanaService?.streamSeyana()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unbindService(mConnection)
     }
 }
